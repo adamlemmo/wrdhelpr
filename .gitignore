@@ -1,0 +1,91 @@
+# --------------------
+# Node & Web Projects
+# --------------------
+node_modules/
+dist/
+build/
+.env
+.DS_Store
+*.log
+*.bak
+npm-debug.log*
+
+# OS-specific
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+
+# VS Code
+.vscode/
+
+# --------------------
+# Adobe Files
+# --------------------
+# Photoshop
+*.psd
+*.psb
+
+# Illustrator
+*.ai
+*.ait
+
+# InDesign
+*.indd
+*.indt
+*.idml
+
+# After Effects
+*.aep
+*.aepx
+*.ffx
+
+# Premiere Pro
+*.prproj
+*.prfpset
+*.prel
+
+# Audition
+*.sesx
+
+# Adobe Swatches, Brushes, etc.
+*.ase
+*.abr
+
+# Adobe Media Cache
+Adobe Premiere Pro Auto-Save/
+Adobe After Effects Auto-Save/
+*/Adobe\ */Media\ Cache\ Files/
+*.pek
+*.cfa
+*.ims
+
+# Optional: PDF and large raw image types
+*.pdf
+*.tiff
+*.tif
+*.raw
+
+# --------------------
+# Temp/Backup Files
+# --------------------
+*.tmp
+*.swp
+*.swo
+*.~lock.*#
+
+# --------------------
+# Mac/Windows Generated
+# --------------------
+.DS_Store
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# --------------------
+# Capacitor/Android/iOS builds (if using)
+# --------------------
+android/
+ios/
+*.apk
+*.aab
