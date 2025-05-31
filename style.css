@@ -77,8 +77,27 @@ h1 {
   margin-bottom: 2%;
   padding: 1%;
   display: none;
+  font-size: xx-large;
 }
 
 .resultDisplay {
   display: block;
+}
+p {
+  margin-left: 2.5%;
+  width: 95%;
+}
+#copyBtn {
+  font-size: large;
+  font-family: Courier New;
+  font-weight: bold;
+  color: white;
+  background: tomato;
+  border-top: 4px solid white;
+  border-left: 4px solid white;
+  border-right: 4px solid red;
+  border-bottom: 4px solid red;
+  border-radius: 10px;
+  margin: 2%;
+  width: 64px;
 }

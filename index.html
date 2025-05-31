@@ -4,6 +4,7 @@
 <head>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <meta name="theme-color" content="#317EFB">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,41 +13,18 @@
 
 <body>
     <h1>wrdhelpr</h1>
+
     <form id="userInputForm">
+        <p>Enter your letters into the input field, select the button, get the other letters for exclusion purposes.</p>
         <input type="text" id="userInput" name="userInput">
+
         <input type="submit" value="Get other letters" id="submitBtn">
         <div id="result">
 
         </div>
+        <button type="button" id="copyBtn" style="display: none;">📋COPY</button>
     </form>
-
-    <script>
-        document.getElementById("userInputForm").addEventListener("submit", function (event) {
-            event.preventDefault(); // Prevent the form from submitting and refreshing the page
-
-            // Get the user input value
-            var userInput = document.getElementById("userInput").value.toUpperCase();
-
-            // Define the alphabet
-            var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-            // Initialize an empty string to store missing letters
-            var missingLetters = "";
-
-            // Loop through each letter of the alphabet
-            for (var i = 0; i < alphabet.length; i++) {
-                // Check if the current letter is not included in the user input
-                if (userInput.indexOf(alphabet[i]) === -1) {
-                    // If the letter is missing, add it to the missingLetters string
-                    missingLetters += alphabet[i] + "";
-                }
-            }
-
-            // Display the missing letters            
-            document.getElementById("result").textContent = missingLetters;
-            document.getElementById("result").style.display = "block";
-        });
-    </script>
+     <script src="script.js"></script>
 </body>
 
 </html>
