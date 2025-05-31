@@ -78,6 +78,7 @@ h1 {
   padding: 1%;
   display: none;
   font-size: xx-large;
+  word-wrap: break-word;
 }
 
 .resultDisplay {
