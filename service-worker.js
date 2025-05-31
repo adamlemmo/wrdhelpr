@@ -1,4 +1,4 @@
-const CACHE_NAME = "my-pwa-cache-v6"; // 🔁 Bump this version on every update
+const CACHE_NAME = "my-pwa-cache-v7"; // 🔁 Bump this version on every update
 
 const FILES_TO_CACHE = [
   "/",
