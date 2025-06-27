@@ -1,0 +1,19 @@
+{
+  "name": "wrdhelpr",
+  "version": "1.0.0",
+  "description": "Word Helper app for helping with word games like Squardle, Wordle etc.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@capacitor/cli": "^7.2.0",
+    "@capacitor/core": "^7.2.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "vite-plugin-pwa": "^1.0.0"
+  }
+}
