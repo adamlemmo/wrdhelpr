@@ -1,24 +1,60 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("/service-worker.js")
+    .then(() => console.log("Service Worker registered"))
+    .catch((err) => console.error("Service Worker error:", err));
+}
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const url = new URL(window.location);
+const sharedTitle = url.searchParams.get("title");
+const sharedText = url.searchParams.get("text");
+const sharedUrl = url.searchParams.get("url");
 
-setupCounter(document.querySelector('#counter'))
+const userInputField = document.getElementById("userInput");
+
+if (sharedText) {
+  userInputField.value = sharedText.toUpperCase().replace(/[^A-Z]/g, '');
+} else if (sharedTitle) {
+  userInputField.value = sharedTitle.toUpperCase().replace(/[^A-Z]/g, '');
+} else if (sharedUrl) {
+  userInputField.value = sharedUrl.toUpperCase().replace(/[^A-Z]/g, '');
+}
+
+
+
+
+userInputField.addEventListener("keyup", function() {
+  let cleanedInput = this.value.toUpperCase().replace(/[^A-Z]/g, '');
+  this.value = cleanedInput;
+});
+
+document.getElementById("userInputForm").addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const userInput = userInputField.value;
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let missingLetters = "";
+
+  for (let i = 0; i < alphabet.length; i++) {
+    if (userInput.indexOf(alphabet[i]) === -1) {
+      missingLetters += alphabet[i];
+    }
+  }
+
+  const resultDiv = document.getElementById("result");
+  resultDiv.textContent = missingLetters;
+  resultDiv.style.display = "block";
+
+  const copyBtn = document.getElementById("copyBtn");
+  copyBtn.style.display = "inline-block"; // Show the copy button
+});
+
+// Copy result text to clipboard
+document.getElementById("copyBtn").addEventListener("click", function () {
+  const resultText = document.getElementById("result").textContent;
+  navigator.clipboard
+    .writeText(resultText)
+    .then(() => alert("Copied to clipboard!"))
+    .catch((err) => console.error("Copy failed:", err));
+});
+

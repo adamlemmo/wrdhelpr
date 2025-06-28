@@ -1,14 +1,7 @@
+importScripts('/assets-to-cache.json');
+
 const CACHE_NAME = 'wrdhelpr-cache-v1';
-const ASSETS_TO_CACHE = [
-  '/wrdhelpr/',            // index.html root
-  '/wrdhelpr/index.html',
-  '/wrdhelpr/manifest.json',
-  '/wrdhelpr/style.css',   // or your CSS file(s)
-  '/wrdhelpr/main.js',     // or your JS file(s)
-  '/wrdhelpr/icon-192.png',
-  '/wrdhelpr/icon-512.png',
-  // Add other assets you want cached
-];
+const ASSETS_TO_CACHE = self.assetsToCache;
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

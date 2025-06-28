@@ -1,5 +1,5 @@
 # --------------------
-# Node & Web Projects
+# Node / JavaScript Projects
 # --------------------
 node_modules/
 dist/
@@ -7,67 +7,42 @@ build/
 .env
 .DS_Store
 *.log
-*.bak
 npm-debug.log*
+*.bak
 
-# OS-specific
+# --------------------
+# Vite / Local dev outputs
+# --------------------
+.vite/
+
+# --------------------
+# OS-generated files
+# --------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
 Thumbs.db
 ehthumbs.db
-Icon?
 desktop.ini
 
-# VS Code
+# --------------------
+# VS Code settings (optional)
+# --------------------
 .vscode/
 
 # --------------------
-# Adobe Files
+# Capacitor / Mobile Builds
 # --------------------
-# Photoshop
-*.psd
-*.psb
-
-# Illustrator
-*.ai
-*.ait
-
-# InDesign
-*.indd
-*.indt
-*.idml
-
-# After Effects
-*.aep
-*.aepx
-*.ffx
-
-# Premiere Pro
-*.prproj
-*.prfpset
-*.prel
-
-# Audition
-*.sesx
-
-# Adobe Swatches, Brushes, etc.
-*.ase
-*.abr
-
-# Adobe Media Cache
-Adobe Premiere Pro Auto-Save/
-Adobe After Effects Auto-Save/
-*/Adobe\ */Media\ Cache\ Files/
-*.pek
-*.cfa
-*.ims
-
-# Optional: PDF and large raw image types
-*.pdf
-*.tiff
-*.tif
-*.raw
+android/
+ios/
+*.apk
+*.aab
 
 # --------------------
-# Temp/Backup Files
+# Temporary / Backup Files
 # --------------------
 *.tmp
 *.swp
@@ -75,17 +50,30 @@ Adobe After Effects Auto-Save/
 *.~lock.*#
 
 # --------------------
-# Mac/Windows Generated
+# Adobe / Large Design Files (optional)
 # --------------------
-.DS_Store
-ehthumbs.db
-Thumbs.db
-desktop.ini
+*.psd
+*.ai
+*.indd
+*.aep
+*.prproj
+*.sesx
+*.ffx
+*.pdf
+*.tiff
+*.tif
+*.raw
 
 # --------------------
-# Capacitor/Android/iOS builds (if using)
+# Global ignores for logs and caches
 # --------------------
-android/
-ios/
-*.apk
-*.aab
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --------------------
+# Optional: Ignore package-lock or yarn.lock if you always want fresh installs
+# (uncomment if desired)
+# package-lock.json
+# yarn.lock
