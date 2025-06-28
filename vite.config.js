@@ -16,6 +16,8 @@ export default defineConfig({
       manifest: {
         name: "wrdhelpr",
         short_name: "wrdhelpr",
+        scope: '/wrdhelpr/',
+        start_url: '.',
         theme_color: "#317EFB",
         icons: [
           {
