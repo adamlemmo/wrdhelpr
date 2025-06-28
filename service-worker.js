@@ -5,8 +5,8 @@ const ASSETS_TO_CACHE = [
   '/manifest.json',
   '/style.css',   // or your CSS file(s)
   '/main.js',     // or your JS file(s)
-  '/pwa-192x192.png',
-  '/pwa-512x512.png',
+  '/icon-192.png',
+  '/icon-512.png',
   // Add other assets you want cached
 ];
 
