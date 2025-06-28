@@ -1,9 +1,4 @@
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker
-    .register("/service-worker.js")
-    .then(() => console.log("Service Worker registered"))
-    .catch((err) => console.error("Service Worker error:", err));
-}
+
 
 const url = new URL(window.location);
 const sharedTitle = url.searchParams.get("title");

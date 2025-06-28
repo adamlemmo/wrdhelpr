@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "Word Helper app for helping with word games like Squardle, Wordle etc.",
   "scripts": {
+    "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "generate-assets": "node generate-assets-json.js",
-    "start": "echo '🟡 Generating assets...' && npm run generate-assets || exit 1 && echo '🟢 Assets generated successfully.' && npm run dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@capacitor/cli": "^7.2.0",

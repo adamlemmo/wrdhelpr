@@ -2,36 +2,48 @@ import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
-  root: "src", // 👈 source files are under /src
-  base: "/wrdhelpr/", // 👈 base URL for dev and production (GitHub Pages)
+  base: '/wrdhelpr/',
   plugins: [
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg", "robots.txt", "apple-touch-icon.png"],
+      injectRegister: 'auto',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+      },
+      devOptions: {
+        enabled: true
+      },
       manifest: {
         name: "wrdhelpr",
         short_name: "wrdhelpr",
         theme_color: "#317EFB",
         icons: [
           {
-            src: "/icons/pwa-192x192.png", // Adjust path to your icons folder in /public/icons/
+            src: "icons/pwa-192x192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "/icons/pwa-512x512.png",
+            src: "icons/pwa-512x512.png",
             sizes: "512x512",
             type: "image/png",
           },
         ],
-      },
-      workbox: {
-        globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
+        "share_target": {
+          "action": "/share-target.html",
+          "method": "GET",
+          "enctype": "application/x-www-form-urlencoded",
+          "params": {
+            "title": "title",
+            "text": "text",
+            "url": "url"
+          }
+        }
       },
     }),
   ],
   build: {
-    outDir: "../dist", // 👈 output build to project root /dist folder
+    outDir: "dist",
     emptyOutDir: true,
   },
 });
