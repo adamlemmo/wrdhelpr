@@ -1,12 +1,12 @@
 const CACHE_NAME = 'wrdhelpr-cache-v1';
 const ASSETS_TO_CACHE = [
-  '/',            // index.html root
-  '/index.html',
-  '/manifest.json',
-  '/style.css',   // or your CSS file(s)
-  '/main.js',     // or your JS file(s)
-  '/icon-192.png',
-  '/icon-512.png',
+  '/wrdhelpr/',            // index.html root
+  '/wrdhelpr/index.html',
+  '/wrdhelpr/manifest.json',
+  '/wrdhelpr/style.css',   // or your CSS file(s)
+  '/wrdhelpr/main.js',     // or your JS file(s)
+  '/wrdhelpr/icon-192.png',
+  '/wrdhelpr/icon-512.png',
   // Add other assets you want cached
 ];
 
