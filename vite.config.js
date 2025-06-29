@@ -9,40 +9,25 @@ export default defineConfig(({ command }) => ({
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
-      devOptions: {
-        enabled: true
-      },
+      includeAssets: ['favicon.ico', 'icons/pwa-192x192.png', 'icons/pwa-512x512.png'],
       manifest: {
         name: "wrdhelpr",
         short_name: "wrdhelpr",
-        scope: '/wrdhelpr/',
-        start_url: "/wrdhelpr/",
-        display: "standalone",
-        background_color: "#ffffff",
-        theme_color: "#317EFB",
+        description: "A word puzzle helper",
+        theme_color: "#ffffff",
         icons: [
           {
-            src: "icons/pwa-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
+            src: 'icons/pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png'
           },
           {
-            src: "icons/pwa-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-          },
-        ],
-        share_target: {
-          action: "/wrdhelpr/share-target.html",
-          method: "GET",
-          enctype: "application/x-www-form-urlencoded",
-          params: {
-            title: "title",
-            text: "text",
-            url: "url",
-          },
-        },
-      },
+            src: 'icons/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png'
+          }
+        ]
+      }
     })
   ]
 }))
