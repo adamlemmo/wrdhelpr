@@ -9,6 +9,7 @@ export default defineConfig(({ command }) => ({
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
+      version: '1.0.1', // Increment this to force service worker update
       devOptions: {
         enabled: true
       },
