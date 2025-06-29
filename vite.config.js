@@ -17,6 +17,8 @@ export default defineConfig(({ command }) => ({
         name: "wrdhelpr",
         short_name: "wrdhelpr",
         description: "A word puzzle helper",
+        scope: '/wrdhelpr/',
+        start_url: '/wrdhelpr/',
         theme_color: "#ffffff",
         background_color: "#ffffff",
         display: "standalone",
