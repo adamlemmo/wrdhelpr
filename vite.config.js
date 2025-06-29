@@ -18,6 +18,8 @@ export default defineConfig(({ command }) => ({
         short_name: "wrdhelpr",
         description: "A word puzzle helper",
         theme_color: "#ffffff",
+        background_color: "#ffffff",
+        display: "standalone",
         icons: [
           {
             src: 'icons/pwa-192x192.png',
