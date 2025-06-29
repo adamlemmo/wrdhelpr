@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Processing Shared Content</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module">
+    window.addEventListener('DOMContentLoaded', async () => {
+      const params = new URLSearchParams(window.location.search);
+
+      // Try to get POSTed form data using launchQueue (supported on Android)
+      const formData = await getPostData();
+
+      // Extract fields defined in manifest share_target params
+      const title = formData.get('title') || '';
+      const text = formData.get('text') || '';
+      const url = formData.get('url') || '';
+
+      console.log('Shared content received:', { title, text, url });
+
+      // Here, you can redirect to your main app page with shared data as query params,
+      // or update this page to display/process it directly:
+      window.location.href = `/index.html?title=${encodeURIComponent(title)}&text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+    });
+
+    async function getPostData() {
+      if ('launchQueue' in window && 'setConsumer' in window.launchQueue) {
+        return new Promise(resolve => {
+          window.launchQueue.setConsumer(launchParams => {
+            if (launchParams && launchParams.files) {
+              resolve(launchParams.formData || new FormData());
+            } else {
+              resolve(new FormData());
+            }
+          });
+        });
+      } else {
+        return new FormData();
+      }
+    }
+  </script>
+</head>
+<body>
+  <p>Processing shared content, please wait...</p>
+</body>
+</html>
