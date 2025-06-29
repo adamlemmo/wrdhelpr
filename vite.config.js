@@ -9,6 +9,9 @@ export default defineConfig(({ command }) => ({
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true
+      },
       includeAssets: ['favicon.ico', 'icons/pwa-192x192.png', 'icons/pwa-512x512.png'],
       manifest: {
         name: "wrdhelpr",
