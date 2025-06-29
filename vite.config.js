@@ -3,6 +3,9 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig(({ command }) => ({
   base: command === 'build' ? '/wrdhelpr/' : '/',
+  build: {
+    outDir: 'docs'
+  },
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
@@ -14,6 +17,8 @@ export default defineConfig(({ command }) => ({
         short_name: "wrdhelpr",
         scope: '/wrdhelpr/',
         start_url: "/wrdhelpr/",
+        display: "standalone",
+        background_color: "#ffffff",
         theme_color: "#317EFB",
         icons: [
           {
