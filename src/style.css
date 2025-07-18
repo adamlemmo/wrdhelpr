@@ -213,6 +213,13 @@ p {
   margin-right: auto;
 }
 
+.length-controls-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
 .length-control-group label {
   margin-bottom: 0;
 }

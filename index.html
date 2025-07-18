@@ -60,15 +60,17 @@
             <!-- Word Length Filter (Number Ticker and Any Switch) -->
             <div class="length-control-group">
                 <label for="wordLengthInput">Length</label>
-                <div class="number-ticker">
-                    <button type="button" id="decreaseLength">-</button>
-                    <input type="number" id="wordLengthInput" min="3" max="16" value="3" readonly>
-                    <button type="button" id="increaseLength">+</button>
-                </div>
-                <div class="any-switch">
-                    <input type="checkbox" id="anyLengthToggle" class="switch-checkbox">
-                    <label for="anyLengthToggle" class="switch-label"></label>
-                    <span class="switch-text">Any</span>
+                <div class="length-controls-wrapper">
+                    <div class="number-ticker">
+                        <button type="button" id="decreaseLength">-</button>
+                        <input type="number" id="wordLengthInput" min="3" max="16" value="3" readonly>
+                        <button type="button" id="increaseLength">+</button>
+                    </div>
+                    <div class="any-switch">
+                        <input type="checkbox" id="anyLengthToggle" class="switch-checkbox">
+                        <label for="anyLengthToggle" class="switch-label"></label>
+                        <span class="switch-text">Any</span>
+                    </div>
                 </div>
             </div>
 

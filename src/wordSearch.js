@@ -23,38 +23,42 @@ function setupInputValidation() {
   const startsWithInputEl = document.getElementById('startsWithInput');
   const containsInputEl = document.getElementById('containsInput');
   const endsWithInputEl = document.getElementById('endsWithInput');
+  const searchInputs = [startsWithInputEl, containsInputEl, endsWithInputEl];
 
-  const syncUserInput = () => {
-    const starts = startsWithInputEl.value.toUpperCase();
-    const contains = containsInputEl.value.toUpperCase();
-    const ends = endsWithInputEl.value.toUpperCase();
-
-    const allChars = new Set((starts + contains + ends).split(''));
-    const sortedChars = Array.from(allChars).sort().join('');
+  // When user types in the main input, validate the search fields
+  userInputEl.addEventListener('input', () => {
+    const allowedLetters = new Set(userInputEl.value.toUpperCase().split(''));
     
-    userInputEl.value = sortedChars;
-  };
+    searchInputs.forEach(input => {
+      let originalValue = input.value.toUpperCase();
+      let filteredValue = originalValue.split('').filter(char => allowedLetters.has(char)).join('');
+      
+      if (originalValue !== filteredValue) {
+        input.value = filteredValue;
+      }
+    });
+  });
 
-  const validateAndSync = (inputElement) => {
-    // Clean the current input field (letters only, uppercase)
-    let cleanedValue = inputElement.value.toUpperCase().replace(/[^A-Z]/g, '');
-    if (inputElement.value !== cleanedValue) {
-      inputElement.value = cleanedValue;
-    }
-    
-    // Sync all letters to the main userInput field
-    syncUserInput();
-  };
+  // When user types in a search field, add new letters to the main input
+  searchInputs.forEach(input => {
+    input.addEventListener('input', () => {
+      let cleanedValue = input.value.toUpperCase().replace(/[^A-Z]/g, '');
+      if (input.value !== cleanedValue) {
+        input.value = cleanedValue;
+      }
 
-  if (startsWithInputEl) {
-    startsWithInputEl.addEventListener('input', () => validateAndSync(startsWithInputEl));
-  }
-  if (containsInputEl) {
-    containsInputEl.addEventListener('input', () => validateAndSync(containsInputEl));
-  }
-  if (endsWithInputEl) {
-    endsWithInputEl.addEventListener('input', () => validateAndSync(endsWithInputEl));
-  }
+      const combinedLetters = new Set(userInputEl.value.toUpperCase().split(''));
+      cleanedValue.split('').forEach(char => combinedLetters.add(char));
+      
+      const sortedChars = Array.from(combinedLetters).sort().join('');
+      
+      if (userInputEl.value !== sortedChars) {
+        userInputEl.value = sortedChars;
+        // Trigger the input event on userInput to re-validate the other fields
+        userInputEl.dispatchEvent(new Event('input'));
+      }
+    });
+  });
 }
 
 /**
