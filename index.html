@@ -1,30 +1,98 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    
-    <meta name="theme-color" content="#317EFB">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.webmanifest">
-    <title>word puzzle helper </title>
-  <script type="module" crossorigin src="/wrdhelpr/assets/index-eRLb2fTW.js"></script>
-  <link rel="stylesheet" crossorigin href="/wrdhelpr/assets/index-CThfIFth.css">
-<link rel="manifest" href="/wrdhelpr/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/wrdhelpr/registerSW.js"></script></head>
+    <head>
 
-<body>
-    <h1>wrdhelpr</h1>
+        <meta name="theme-color" content="#317EFB">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <form id="userInputForm">
-        <p>Enter your letters into the input field, select the button, get the other letters for exclusion purposes.</p>
-        <input type="text" id="userInput" name="userInput">
+        <title>word puzzle helper
+        </title>
+      <script type="module" crossorigin src="/wrdhelpr/assets/index-oItunI6L.js"></script>
+      <link rel="stylesheet" crossorigin href="/wrdhelpr/assets/index-B9hGTqUL.css">
+    <link rel="manifest" href="/wrdhelpr/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/wrdhelpr/registerSW.js"></script></head>
 
-        <input type="submit" value="Get other letters" id="submitBtn">
-        <div id="result">
+    <body>
+        <h1>wrdhelpr V2</h1>
 
+        <form id="userInputForm">
+            <p class="form-prompt">Enter letters from the game</p>
+            <input type="text" id="userInput" name="userInput">
+
+            <div class="excluded-letters-container">
+                <p class="excluded-letters-heading">Excluded letters</p>
+                <div id="result-wrapper">
+                    <div id="result"></div>
+                    <button type="button" id="copyBtn">📋</button>
+                </div>
+            </div>
+
+            <div id="searchInputs">
+                <!-- Starts With Search -->
+                <div class="search-input-group">
+                    <label for="startsWithInput">Starts</label>
+                    <div class="search-input-container">
+                        <input type="text" id="startsWithInput" class="search-input" maxlength="3">
+                        <span id="startsWithFeedback" class="input-feedback"></span>
+                    </div>
+                </div>
+
+                <!-- Contains Search -->
+                <div class="search-input-group">
+                    <label for="containsInput">Contains</label>
+                    <div class="search-input-container">
+                        <input type="text" id="containsInput" class="search-input" maxlength="3">
+                        <span id="containsFeedback" class="input-feedback"></span>
+                    </div>
+                </div>
+
+                <!-- Ends With Search -->
+                <div class="search-input-group">
+                    <label for="endsWithInput">Ends</label>
+                    <div class="search-input-container">
+                        <input type="text" id="endsWithInput" class="search-input" maxlength="3">
+                        <span id="endsWithFeedback" class="input-feedback"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Word Length Filter (Number Ticker and Any Switch) -->
+            <div class="length-control-group">
+                <label for="wordLengthInput">Length</label>
+                <div class="length-controls-wrapper">
+                    <div class="number-ticker">
+                        <button type="button" id="decreaseLength">-</button>
+                        <input type="number" id="wordLengthInput" min="3" max="16" value="3" readonly>
+                        <button type="button" id="increaseLength">+</button>
+                    </div>
+                    <div class="any-switch">
+                        <input type="checkbox" id="anyLengthToggle" class="switch-checkbox">
+                        <label for="anyLengthToggle" class="switch-label"></label>
+                        <span class="switch-text">Any</span>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn" class="search-btn">Search</button>
+        </form>
+
+        <!-- Search Results -->
+        <div id="searchResults" style="display: none;">
+            <div id="resultsHeader">
+                <h3 id="resultsTitle">Search Results</h3>
+                           </div>
+            <div id="loadingIndicator" style="display: none;">
+                <p>Searching...</p>
+            </div>
+            <div id="wordsList"></div>
+            <div id="noResults" style="display: none;">
+                <p>No words found. Try a different search.</p>
+            </div>
         </div>
-        <button type="button" id="copyBtn" style="display: none;">📋COPY</button>
-    </form>
-</body>
+
+        <div id="toast">Copied!</div>
+
+    </body>
 
 </html>
