@@ -111,10 +111,10 @@ h1 {
 }
 
 #result-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 10px;
 }
 
 #result {
@@ -128,7 +128,7 @@ h1 {
   font-size: large;
   word-wrap: break-word;
   background-color: blanchedalmond;
-  min-width: 200px;
+  margin-left: 0px;
 }
 
 p {
@@ -214,10 +214,10 @@ p {
 }
 
 .length-controls-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
 }
 
 .length-control-group label {
@@ -740,4 +740,8 @@ p {
   .occurrences-container {
     justify-content: center;
   }
+}
+#userInputForm, #searchResults {
+  max-width: 640px;
+  margin:auto;
 }

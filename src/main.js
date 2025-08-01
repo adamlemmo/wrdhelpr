@@ -1,5 +1,22 @@
 import { initWordSearch, handleSearch } from './wordSearch.js';
 
+function calculateAndDisplayMissingLetters() {
+  const userInputField = document.getElementById("userInput");
+  if (!userInputField) return;
+  const userInput = userInputField.value;
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let missingLetters = "";
+
+  for (let i = 0; i < alphabet.length; i++) {
+    if (userInput.indexOf(alphabet[i]) === -1) {
+      missingLetters += alphabet[i];
+    }
+  }
+
+  const resultDiv = document.getElementById("result");
+  resultDiv.textContent = missingLetters;
+}
+
 export function initApp() {
   const url = new URL(window.location);
   const sharedTitle = url.searchParams.get("title");
@@ -9,20 +26,6 @@ export function initApp() {
   const userInputField = document.getElementById("userInput");
   if (!userInputField) return; // safety: exit if DOM not ready
 
-  const calculateAndDisplayMissingLetters = () => {
-    const userInput = userInputField.value;
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let missingLetters = "";
-
-    for (let i = 0; i < alphabet.length; i++) {
-      if (userInput.indexOf(alphabet[i]) === -1) {
-        missingLetters += alphabet[i];
-      }
-    }
-
-    const resultDiv = document.getElementById("result");
-    resultDiv.textContent = missingLetters;
-  };
 
   if (sharedText) {
     userInputField.value = sharedText.toUpperCase().replace(/[^A-Z]/g, "");
@@ -32,15 +35,20 @@ export function initApp() {
     userInputField.value = sharedUrl.toUpperCase().replace(/[^A-Z]/g, "");
   }
 
-  userInputField.addEventListener("keyup", function () {
-    let cleanedInput = this.value.toUpperCase().replace(/[^A-Z]/g, "");
-    this.value = cleanedInput;
+  userInputField.addEventListener("keyup", () => {
+    let cleanedInput = userInputField.value.toUpperCase().replace(/[^A-Z]/g, "");
+    userInputField.value = cleanedInput;
     calculateAndDisplayMissingLetters();
   });
 
   document.getElementById("userInputForm").addEventListener("submit", function (event) {
     event.preventDefault();
-    handleSearch();
+    const userInput = document.getElementById("userInput").value;
+    if (!userInput) {
+      showToast("Please enter some letters to search");
+    } else {
+      handleSearch();
+    }
   });
 
   document.getElementById("copyBtn").addEventListener("click", function () {

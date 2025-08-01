@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Search</title>
+</head>
+<body>
+    <h1>Debug Search Test</h1>
+    <button onclick="testSearch()">Test Search</button>
+    <div id="results"></div>
+
+    <script>
+        async function testSearch() {
+            const apiUrl = 'https://api.datamuse.com/words?sp=l*&md=d&max=1000';
+            console.log('Testing API URL:', apiUrl);
+            
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                console.log('API returned', data.length, 'results');
+                console.log('First 10 results:', data.slice(0, 10));
+                
+                // Test letter filtering
+                const userInput = "LOOKB";
+                const userInputFreq = {};
+                for (const char of userInput.toUpperCase()) {
+                    userInputFreq[char] = (userInputFreq[char] || 0) + 1;
+                }
+                console.log('Available letters:', userInputFreq);
+                
+                const validWords = data.filter(wordData => {
+                    const word = wordData.word;
+                    const wordFreq = {};
+                    for (const char of word.toUpperCase()) {
+                        wordFreq[char] = (wordFreq[char] || 0) + 1;
+                    }
+                    
+                    for (const char in wordFreq) {
+                        if (!userInputFreq[char] || wordFreq[char] > userInputFreq[char]) {
+                            return false;
+                        }
+                    }
+                    return true;
+                });
+                
+                console.log('Valid words that can be made from LOOKB:', validWords);
+                document.getElementById('results').innerHTML = 
+                    '<h2>Valid Words:</h2>' + 
+                    validWords.map(w => w.word).join(', ');
+                    
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
